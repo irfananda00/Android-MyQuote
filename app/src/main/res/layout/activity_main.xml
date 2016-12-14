@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.irfanandarafifsatrio.myquote.vm.MainActivity" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v7.widget.RecyclerView
+            tools:visibility="gone"
+            android:visibility="@{vm.bIsDataExist ? View.VISIBLE : View.GONE}"
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:adapter="@{vm.bAdapter}"
+            app:layoutManager="@{vm.bLayoutManager}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:listitem="@layout/item_quote" />
+
+        <LinearLayout
+            android:padding="16dp"
+            android:gravity="center"
+            android:background="@color/background_custom"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:visibility="@{vm.bIsDataExist ? View.GONE : View.VISIBLE}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                app:srcCompat="@drawable/ic_lightbulb_outline_48dp"/>
+
+            <TextView
+                fontPath="Nunito_Sans/NunitoSans-SemiBoldItalic.ttf"
+                android:layout_marginTop="16dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:text=" &quot; The best way to have a good idea \n is to have a lot of ideas. &quot; "
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                fontPath="Nunito_Sans/NunitoSans-Regular.ttf"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="128dp"
+                android:gravity="center"
+                android:text="@string/quote_by"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:onClick="@{vm.onClickShowForm}"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_anchorGravity="bottom|right|end"
+            app:srcCompat="@drawable/ic_add_24dp"
+            tools:visibility="visible"
+            android:visibility="@{vm.bIsInput ? View.GONE : View.VISIBLE}"
+            />
+
+        <LinearLayout
+            android:visibility="@{vm.bIsInput ? View.VISIBLE : View.GONE}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_anchorGravity="bottom">
+
+            <View
+                android:background="@color/grey_light"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <LinearLayout
+                android:paddingLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center">
+
+                <EditText
+                    fontPath="Nunito_Sans/NunitoSans-SemiBold.ttf"
+                    android:background="@null"
+                    android:id="@+id/bQuote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/add_a_quote" />
+
+                <FrameLayout
+                    android:foreground="?attr/selectableItemBackground"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:onClick="@{vm.onClickAdd}">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_send_24dp" />
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

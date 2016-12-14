@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.irfanandarafifsatrio.myquote.vm.QuoteItemVM" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:background="@color/backgroundSecondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:cardUseCompatPadding="true">
+
+            <TextView
+                fontPath="Nunito_Sans/NunitoSans-SemiBoldItalic.ttf"
+                android:textSize="16sp"
+                tools:text="Lorem Ipsum dolor sit Amet"
+                android:text="@{vm.bText}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                fontPath="Roboto/Roboto-Regular.ttf"
+                android:textColor="@color/grey_light"
+                android:paddingTop="4dp"
+                tools:text="24 Apr"
+                android:text="@{vm.bDate}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!--<View-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:background="@color/grey_light"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"/>-->
+
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>
